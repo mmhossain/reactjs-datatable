@@ -132,22 +132,24 @@ class Applications extends Component {
       [tableSettings.sortColumn.order]
     );
 
-    const filteredData = paginate(
-      sortedData,
-      tableSettings.currentPage,
-      tableSettings.pageSize
-    );
-
     const settings = {
       columns: this.columns,
       itemsCount: sortedData.length,
       sortColumn: tableSettings.sortColumn,
       pageSize: tableSettings.pageSize,
       currentPage: tableSettings.currentPage,
+      showSearchOption: true,
+      showPagination: true,
       onSearchTextChanged: this.handleSearch,
       onSort: this.handleSort,
       onPageChanged: this.handlePageChange,
     };
+
+    const filteredData = paginate(
+      sortedData,
+      tableSettings.currentPage,
+      settings.showPagination ? tableSettings.pageSize : 0
+    );
 
     return <Table settings={settings} data={filteredData} />;
   }

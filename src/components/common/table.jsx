@@ -11,6 +11,8 @@ const Table = (props) => {
     itemsCount,
     pageSize,
     currentPage,
+    showSearchOption,
+    showPagination,
     onSearchTextChanged,
     onSort,
     onPageChanged,
@@ -18,7 +20,9 @@ const Table = (props) => {
 
   return (
     <React.Fragment>
-      <TableSearch onSearchTextChanged={onSearchTextChanged} />
+      {showSearchOption && (
+        <TableSearch onSearchTextChanged={onSearchTextChanged} />
+      )}
       <table className="table">
         <TableHeader
           columns={columns}
@@ -27,12 +31,14 @@ const Table = (props) => {
         />
         <TableBody columns={columns} data={props.data} />
       </table>
-      <Pagination
-        itemsCount={itemsCount}
-        pageSize={pageSize}
-        currentPage={currentPage}
-        onPageChanged={onPageChanged}
-      />
+      {showPagination && (
+        <Pagination
+          itemsCount={itemsCount}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChanged={onPageChanged}
+        />
+      )}
     </React.Fragment>
   );
 };
