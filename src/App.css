@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.search-input {
+  margin: 10px 0px;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  width: 250px;
+}
